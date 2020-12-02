@@ -191,6 +191,8 @@ utterances:
   - eat [countItems](3) of my [item](bread)
   - eat [countItems](ten) [item](gold)
   - eat [inventNum](ten)
+  - eat some [item](bread)
+  - eat my [item](apple)
  
 #Game item entities
 ---
