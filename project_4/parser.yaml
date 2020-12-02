@@ -10,6 +10,9 @@ slots:
     entity : snips/number
 utterances:
   - move [direction](Forward) [steps](10)
+  - move [steps](two) steps [direction](Back)
+  - move [steps](two) [direction](Back)
+  - go [steps](3) steps up
   - go [direction](up) [steps](three)
 
 # move Entity
@@ -17,7 +20,29 @@ utterances:
 type: entity
 name: Direction
 values:
-  - [forward, up, upwards]
-  - [back, down, backwards]
-  - left
-  - right
+  - [up, forward, upwards, u, f]
+  - [down, back, backwards, d, b]
+  - [left, l]
+  - [right, r]
+
+
+#move intent
+---
+type: intent
+name: help
+
+slots:
+  - name: problem
+    entity : problemCats
+utterances:
+  - How do i [problem](move)
+  - help [problem](inventory)
+  - How to [problem](mine)
+
+---
+type: entity
+name: problemCats
+values:
+  - move
+  - inventory
+  - mine
