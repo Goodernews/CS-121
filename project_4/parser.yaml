@@ -1,0 +1,24 @@
+#move intent
+---
+type: intent
+name: move
+
+slots:
+  - name: direction
+    entity: Direction
+  - name: steps
+    entity : snips/number
+utterances:
+  - move [direction](Forward) [steps](10)
+  - [direction](left) [steps](2)
+  - go [direction](up) [steps](three)
+
+# move Entity
+---
+type: entity
+name: Direction
+values:
+  - [forward, up, upwards]
+  - [back, down, backwards]
+  - left
+  - right
