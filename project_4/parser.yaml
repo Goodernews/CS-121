@@ -137,6 +137,23 @@ utterances:
   - sell [countItems](ten) [item](gold)
   - sell [countItems](ten) of my [item](gold)
   
+#buy intent
+---
+type: intent
+name: buy
+
+slots:
+  - name: item
+    entity : gameItems
+  - name: countItems
+    entity: snips/number
+utterances:
+  - buy [item](apple)
+  - buy [countItems](ten) [item](gold)
+  - get [countItems](ten) [item](apples)
+  - order [countItems](ten) [item](copper)
+  - order [item](bread)
+  
 #pickup intent
 ---
 type: intent
