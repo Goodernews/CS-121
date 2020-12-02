@@ -50,25 +50,20 @@ values:
   - inventory
   - mine
 
-#save entity
+#save intent
 ---
 type: intent
 name: save
 
-slots: 
-  - name : fileName
 utterances:
   - Save game
   - Save
-  - Save to [fileName](mygame)
   
 #end game
 ---
 type: intent
 name: end
 
-slots: 
-  - name : fileName
 utterances:
   - End game
   - End
