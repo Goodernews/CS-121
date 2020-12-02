@@ -10,9 +10,11 @@ slots:
     entity : snips/number
 utterances:
   - move [direction](Forward) [steps](10)
+  - move [direction](left)
   - move [steps](two) steps [direction](Back)
   - move [steps](two) [direction](Back)
-  - go [steps](3) steps up
+  - go [steps](3) steps [direction](b)
+  - go [direction](down)
   - go [direction](up) [steps](three)
 
 # move Entity
@@ -22,8 +24,8 @@ name: Direction
 values:
   - [up, forward, upwards, u, f]
   - [down, back, backwards, d, b]
-  - [left, l]
-  - [right, r]
+  - [left, l, leftwards]
+  - [right, r, rightwards]
 
 
 #move intent
@@ -39,6 +41,7 @@ utterances:
   - help [problem](inventory)
   - How to [problem](mine)
 
+#Problem category entities
 ---
 type: entity
 name: problemCats
@@ -46,3 +49,27 @@ values:
   - move
   - inventory
   - mine
+
+#save entity
+---
+type: intent
+name: save
+
+slots: 
+  - name : fileName
+utterances:
+  - Save game
+  - Save
+  - Save to [fileName](mygame)
+  
+#end game
+---
+type: intent
+name: end
+
+slots: 
+  - name : fileName
+utterances:
+  - End game
+  - End
+  - stop game
