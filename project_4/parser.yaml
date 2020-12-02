@@ -23,10 +23,10 @@ utterances:
 type: entity
 name: Direction
 values:
-  - [up, forward, upwards, u, f]
-  - [down, back, backwards, d, b]
-  - [left, l, leftwards]
-  - [right, r, rightwards]
+  - [north, up, forward, upwards, u, f]
+  - [south, down, back, backwards, d, b]
+  - [west, left, l, leftwards]
+  - [east, right, r, rightwards]
 
 
 #move intent
