@@ -94,6 +94,7 @@ values:
   - [map, m]
   - [inventory, i]
   - [store, s]
+  - [stats, achievements]
   
 #drop intent
 ---
