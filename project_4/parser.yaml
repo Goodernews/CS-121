@@ -123,7 +123,7 @@ utterances:
   - sell [countItems](ten) [item](gold)
   - sell [countItems](ten) of my [item](gold)
   
- #pickup intent
+#pickup intent
 ---
 type: intent
 name: pickup
@@ -138,6 +138,7 @@ utterances:
   - pickup [item](apple)
   - pickup [countItems](3) 
   - pickup [countItems](ten) [item](gold)
+  - pickup [countItems](ten) of [item](copper)
 
 #Game item entities
 ---
