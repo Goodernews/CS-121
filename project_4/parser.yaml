@@ -16,6 +16,7 @@ utterances:
   - go [steps](3) steps [direction](b)
   - go [direction](down)
   - go [direction](up) [steps](three)
+  - go [direction](forward) [steps](twenty) steps
 
 # move Entity
 ---
@@ -40,6 +41,7 @@ utterances:
   - How do i [problem](move)
   - help [problem](inventory)
   - How to [problem](mine)
+  - help
 
 #Problem category entities
 ---
@@ -59,7 +61,7 @@ utterances:
   - Save game
   - Save
   
-#end game
+#end game intent
 ---
 type: intent
 name: end
@@ -68,3 +70,87 @@ utterances:
   - End game
   - End
   - stop game
+
+#open inventory intent
+---
+type: intent
+name: openInventory
+
+utterances:
+  - Open inventory
+  - inventory
+  - i
+
+#drop intent
+---
+type: intent
+name: drop
+
+slots:
+  - name: item
+    entity : gameItems
+  - name: inventNum
+    entity : snips/number
+  - name: countItems
+    entity: snips/number
+utterances:
+  - drop
+  - leave
+  - drop item in hand
+  - drop [item](apple)
+  - drop [inventNum](3) 
+  - drop [countItems](5) [item](apple)
+  - drop inventory [inventNum](3) [item](apples)
+  - leave [item](all) items
+  
+#sell intent
+---
+type: intent
+name: sell
+
+slots:
+  - name: item
+    entity : gameItems
+  - name: inventNum
+    entity : snips/number
+  - name: countItems
+    entity: snips/number
+utterances:
+  - sell
+  - sell item in hand
+  - sell [item](apple)
+  - sell [inventNum](3) 
+  - sell [countItems](ten) [item](gold)
+  - sell [countItems](ten) of my [item](gold)
+  
+ #pickup intent
+---
+type: intent
+name: pickup
+
+slots:
+  - name: item
+    entity : gameItems
+  - name: countItems
+    entity: snips/number
+utterances:
+  - pickup
+  - pickup [item](apple)
+  - pickup [countItems](3) 
+  - pickup [countItems](ten) [item](gold)
+
+#Game item entities
+---
+type: entity
+name: gameItems
+values:
+  - all
+  - rock
+  - coal
+  - gold
+  - copper
+  - diamond
+  - [basic pick axe, basic pickaxe]
+  - [better pick axe, better ]
+  - [apple, apples
+  - [canned bread, bread]
