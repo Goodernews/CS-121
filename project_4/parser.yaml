@@ -71,16 +71,30 @@ utterances:
   - End
   - stop game
 
-#open inventory intent
+#display intent
 ---
 type: intent
-name: openInventory
+name: open
+
+slots:
+  - name: pullUp
+    entity : displayCat
 
 utterances:
-  - Open inventory
-  - inventory
-  - i
+  - open [pullUp](map)
+  - display [pullUp](inventory)
+  - pull up [pullUp](s)
+  - show [pullUp](store)
 
+#display entities
+---
+type: entity
+name: displayCat
+values:
+  - [map, m]
+  - [inventory, i]
+  - [store, s]
+  
 #drop intent
 ---
 type: intent
