@@ -10,7 +10,6 @@ slots:
     entity : snips/number
 utterances:
   - move [direction](Forward) [steps](10)
-#  - [direction](left) [steps](2)
   - go [direction](up) [steps](three)
 
 # move Entity
