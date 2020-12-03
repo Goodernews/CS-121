@@ -17,6 +17,10 @@ utterances:
   - go [direction](down)
   - go [direction](up) [steps](three)
   - go [direction](forward) [steps](twenty) steps
+  - go [direction](forward) [steps](three) paces
+  - "[direction](forward)" 
+  - "[direction](noth) [steps](three)"
+  - "[direction](forward) [steps](twenty) steps"
 
 # move Entity
 ---
@@ -117,6 +121,7 @@ utterances:
   - drop [countItems](5) [item](apple)
   - drop inventory [inventNum](3) [item](apples)
   - leave [item](all) items
+  - "[item](apple)"
   
 #sell intent
 ---
