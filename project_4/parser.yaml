@@ -121,7 +121,6 @@ utterances:
   - drop [countItems](5) [item](apple)
   - drop inventory [inventNum](3) [item](apples)
   - leave [item](all) items
-  - "[item](apple)"
   
 #sell intent
 ---
@@ -198,6 +197,8 @@ utterances:
   - eat [inventNum](ten)
   - eat some [item](bread)
   - eat my [item](apple)
+  - "[item](apple)"
+
  
 #Game item entities
 ---
