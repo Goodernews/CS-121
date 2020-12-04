@@ -89,6 +89,7 @@ utterances:
   - display [pullUp](inventory)
   - pull up [pullUp](s)
   - show [pullUp](store)
+  - "[pullUp](store)"
 
 #display entities
 ---
@@ -199,6 +200,27 @@ utterances:
   - eat my [item](apple)
   - "[item](apple)"
 
+#Heal intent
+---
+type: intent
+name: heal
+
+slots:
+  - name: item
+    entity : gameItems
+  - name: inventNum
+    entity : snips/number
+  - name: countItems
+    entity: snips/number
+utterances:
+  - heal
+  - heal [item](band aid)
+  - heal [countItems](3) [item](bandaid)
+  - heal [countItems](3) of my [item](bread)
+  - mend with [item](gold)
+  - patch up
+  - patch up with [item](gold)
+
  
 #Game item entities
 ---
@@ -206,6 +228,7 @@ type: entity
 name: gameItems
 values:
   - all
+  - [band aid, bandaid, band-aid]
   - rock
   - coal
   - gold
