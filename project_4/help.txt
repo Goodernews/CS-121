@@ -1,3 +1,15 @@
+ .----------------.  .----------------.  .----------------.  .----------------. 
+| .--------------. || .--------------. || .--------------. || .--------------. |
+| |  ____  ____  | || |  _________   | || |   _____      | || |   ______     | |
+| | |_   ||   _| | || | |_   ___  |  | || |  |_   _|     | || |  |_   __ \   | |
+| |   | |__| |   | || |   | |_  \_|  | || |    | |       | || |    | |__) |  | |
+| |   |  __  |   | || |   |  _|  _   | || |    | |   _   | || |    |  ___/   | |
+| |  _| |  | |_  | || |  _| |___/ |  | || |   _| |__/ |  | || |   _| |_      | |
+| | |____||____| | || | |_________|  | || |  |________|  | || |  |_____|     | |
+| |              | || |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------' 
+
  ___
 | _ )_  _ _  _
 | _ \ || | || |
@@ -39,9 +51,9 @@ Note: You cannot sell more than one type of item at a time
 To drop an item use one of the following syntax:
 - Drop
   - Drops item in hand
-- drop [Item]
-- drop [Inventory Number] 
-- drop [Count] [Item]
+- Drop [Item]
+- Drop [Inventory Number] 
+- Drop [Count] [Item]
 
  ___ _    _
 | _ (_)__| |___  _ _ __
@@ -49,58 +61,105 @@ To drop an item use one of the following syntax:
 |_| |_\__|_\_\\_,_| .__/
                   |_|
 
-To pickup an item, use one of the following synatax:
+To pickup an item, use one of the following synataxes:
 - Pickup
 - Pickup [Item]
 - Pickup [Count]
   - Grabs several items from the ground
 - Pickup [Count] [Item]
 - Pickup [Count] of [Item]
-__  __ _
-|  \/  (_)_ _  ___
-| |\/| | | ' \/ -_)
-|_|  |_|_|_||_\___|
-
-  - To mine specify a direction. 
-  
 
  __  __
 |  \/  |_____ _____ 
 | |\/| / _ \ V / -_)
 |_|  |_\___/\_/\___|
- - 
-  - You cannot schain movement directions
 
+To move, use one of the following syntaxes:
+  - Move [Direction] [Steps]
+  - Move [Direction]
+  - Move [Steps] steps [Direction]
+  - Move [Steps] [Direction]
+  - [Direction] 
+    - Takes one step in a specified direction
+  - [Direction] [Steps]
+  - [Direction] [Steps] steps
 
+__  __ _
+|  \/  (_)_ _  ___
+| |\/| | | ' \/ -_)
+|_|  |_|_|_||_\___|
 
+To mine use of the following syntaxes:
+  - Mine [Direction] [strikes]
+  - Mine [Direction]
+  - Mine [strikes] [Direction]
 
+ ___      _
+| __|__ _| |_
+| _|/ _` |  _|
+|___\__,_|\__|
+ 
+To eat you can use the following syntaxes:
+  - Eat
+    - Eats first item in inventory
+  - Eat [Item]
+    - Eats one item 
+  - Eat [Cout] [Item]
+    - Eats several items
+  - Eat [Count] of my [Item]
+  - Eat [Inventory Number]
+    - Eat using inventory item
+  - [Item]
 
-  ___      _   
- | __|__ _| |_ 
- | _|/ _` |  _|
- |___\__,_|\__|
+ _  _          _ 
+| || |___ __ _| |
+| __ / -_) _` | |
+|_||_\___\__,_|_|
  
-   _  _          _ 
- | || |___ __ _| |
- | __ / -_) _` | |
- |_||_\___\__,_|_|
- 
- 
-  ___               
- / __| __ ___ _____ 
- \__ \/ _` \ V / -_)
- |___/\__,_|\_/\___|
- 
-   ___         _ 
- | __|_ _  __| |
- | _|| ' \/ _` |
- |___|_||_\__,_|
- 
- 
-  ___                 
- / _ \ _ __  ___ _ _  
-| (_) | '_ \/ -_) ' \ 
- \___/| .__/\___|_||_|
-      |_|
+You can heal using the following syntaxes:
+  - Heal
+    - Heals with first thing in inventory
+  - Heal [Item]
+  - Heal [Count] [Item]
+    - Heals with multiple items
+  - Heal [Count] of my [Item]
+  - Mend with [Item]
+  - patch up
 
-              
+ ___  _         _
+|   \(_)____ __| |__ _ _  _
+| |) | (_-< '_ \ / _` | || |
+|___/|_/__/ .__/_\__,_|\_, |
+          |_|          |__/
+
+You can display the following categories:
+  - Map
+  - Inventory
+  - Store
+  - Stats
+
+To display a category use one of the following syntaxes:
+  - Open [Pull up category]
+  - Display [Pull up category]
+  - Pull up [Pull up category]
+  - Show [Pull up category]
+  - [Pull up category]
+
+ ___
+/ __| __ ___ _____
+\__ \/ _` \ V / -_)
+|___/\__,_|\_/\___|
+
+To save game use one of the following syntaxes:
+  - Save game
+  - Save
+
+ ___         _
+| __|_ _  __| |
+| _|| ' \/ _` |
+|___|_||_\__,_|
+
+To end game use one of the following syntaxes:
+  - End game
+  - End
+  - Stop game
