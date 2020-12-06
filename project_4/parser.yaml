@@ -221,6 +221,19 @@ utterances:
   - eat my [item](apple)
   - "[item](apple)"
 
+#equip intent
+---
+type: intent
+name: equip
+
+slots:
+  - name: item
+    entity : gameItems
+    
+utterances:
+  - hold [item](apple)
+  - equip [item](band aid)
+
 #Heal intent
 ---
 type: intent
