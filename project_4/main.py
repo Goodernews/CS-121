@@ -23,10 +23,14 @@ import io
 import json
 from snips_nlu import SnipsNLUEngine
 from snips_nlu.default_configs import CONFIG_EN
+from pathlib import Path
 
-#logo = open("text\logo.txt", "r").read()
-#tutorial = open("text\tutorial.txt", "r").read()
-#gen_help = open("text\help.txt", "r").read()
+
+logo = Path('project_4\logo.txt').read_text()
+#tutorial = Path('project_4\tutorial.txt').read_text()
+
+#print(tutorial)
+#gen_help = Path("project_4\help.txt").read_text()
 
 
 
@@ -48,7 +52,7 @@ import Character
 Character = Character.Character
 #################
 
-#funcs.hum_type(logo, speed = 550)
+funcs.hum_type(logo, speed = 550)
 
 #Sets up game assuming no previous file
 if upload_game=="":
@@ -61,9 +65,9 @@ else:
   #layout, character, info = funcs.open_game(upload_game)
 
 if upload_game=="": # intro and tutorial
-    #
-    # funcs.hum_type(tutorial, speed=500)
-    input()
+  #funcs.hum_type(tutorial, speed=500)
+  #input()
+  pass
 
 while True: 
   if character.health<=0:
@@ -77,7 +81,6 @@ while True:
 
   print("--- \n\n")
   layout.display(info.x, info.y)
-  print("Location: " + str([info.x, info.y]))
   user_input = funcs.parse(input("Enter command: "), nlu_engine)
   print(user_input)
   #os.system('cls' if os.name == 'nt' else 'clear')

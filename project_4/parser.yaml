@@ -197,6 +197,9 @@ utterances:
   - pickup [countItems](3) 
   - pickup [countItems](ten) [item](gold)
   - pickup [countItems](ten) of [item](copper)
+  - pick up 
+  - pick up [countItems](ten) [item](gold)
+  - pick up [item](apple)
   
 #eat intent
 ---

@@ -30,7 +30,10 @@ class Layout:
       valid_directions.remove("East")
     if not self.path_clear(x-1, y):
       valid_directions.remove("West")
+
+    
     print("You can travel: ", valid_directions)
+    print("You can mine: ")
     
     if self.items_to_pickup(x,y)==[]:
       print("Nothing to pickup")
