@@ -1,0 +1,106 @@
+ ___
+| _ )_  _ _  _
+| _ \ || | || |
+|___/\_,_|\_, |
+           |__/
+
+**CURRENTLY NOT IMPELEMNTED**
+
+- Buy [Item]
+  - Buy one item
+- Buy [Count] [Item]
+  - Buys more than one item
+- Get [Count] [Item]
+- Order [Count] [Item]
+
+ ___      _ _ 
+/ __| ___| | |
+\__ \/ -_) | |
+|___/\___|_|_|
+
+**CURRENTLY NOT IMPELEMNTED**
+
+To sell an item use one of the following syntax:
+- Sell 
+  - Sells item in hand
+- Sell [Item]
+- Sell [Inventory Number] 
+- Sell [Count] [Item]
+- Sell [Count] of my [Item]
+Note: You cannot sell more than one type of item at a time
+
+
+ ___
+|   \ _ _ ___ _ __
+| |) | '_/ _ \ '_ \
+|___/|_| \___/ .__/
+             |_|
+
+To drop an item use one of the following syntax:
+- Drop
+  - Drops item in hand
+- drop [Item]
+- drop [Inventory Number] 
+- drop [Count] [Item]
+
+ ___ _    _
+| _ (_)__| |___  _ _ __
+|  _/ / _| / / || | '_ \
+|_| |_\__|_\_\\_,_| .__/
+                  |_|
+
+To pickup an item, use one of the following synatax:
+- Pickup
+- Pickup [Item]
+- Pickup [Count]
+  - Grabs several items from the ground
+- Pickup [Count] [Item]
+- Pickup [Count] of [Item]
+__  __ _
+|  \/  (_)_ _  ___
+| |\/| | | ' \/ -_)
+|_|  |_|_|_||_\___|
+
+  - To mine specify a direction. 
+  
+
+ __  __
+|  \/  |_____ _____ 
+| |\/| / _ \ V / -_)
+|_|  |_\___/\_/\___|
+ - 
+  - You cannot schain movement directions
+
+
+
+
+
+  ___      _   
+ | __|__ _| |_ 
+ | _|/ _` |  _|
+ |___\__,_|\__|
+ 
+   _  _          _ 
+ | || |___ __ _| |
+ | __ / -_) _` | |
+ |_||_\___\__,_|_|
+ 
+ 
+  ___               
+ / __| __ ___ _____ 
+ \__ \/ _` \ V / -_)
+ |___/\__,_|\_/\___|
+ 
+   ___         _ 
+ | __|_ _  __| |
+ | _|| ' \/ _` |
+ |___|_||_\__,_|
+ 
+ 
+  ___                 
+ / _ \ _ __  ___ _ _  
+| (_) | '_ \/ -_) ' \ 
+ \___/| .__/\___|_||_|
+      |_|
+
+              
