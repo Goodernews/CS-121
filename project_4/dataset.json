@@ -1125,6 +1125,13 @@
         {
           "data": [
             {
+              "text": "pick up"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
               "text": "pickup "
             },
             {
@@ -1137,7 +1144,31 @@
         {
           "data": [
             {
+              "text": "pick up "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
               "text": "pickup "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pick up "
             },
             {
               "entity": "snips/number",

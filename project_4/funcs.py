@@ -22,7 +22,42 @@ def open_game(file_location):
   pass
 
 def move(info, character, layout, parsed):
-  pass
+  x = info.x
+  y = info.y
+  new_loc = [x,y]
+  move_directions = layout.walk_valid(x, y)
+  direct_move = parsed["direction"]
+  if direct_move.capitalize() not in move_directions:
+    print("You cannot move in that direction")
+    return info, character, layout
+  directions = ["north", "east", "south", "west"]
+  direction_trans = [[1,0], [0,1], [-1,0], [0,-1]]
+  transformation = direction_trans[directions.index(parsed["direction"])]
+  if "steps" not in parsed.keys():
+    steps = 1
+  else:
+    steps = parsed["steps"]
+  for z in range(1, 1+steps):
+    new_loc = [sum(a) for a in zip(new_loc, transformation)]
+    if layout.path_clear(new_loc[0],new_loc[1]):
+      info.x = new_loc[0]
+      info.y = new_loc[1]
+    else:
+      print("Only moved: " + str(z) + " steps.")
+      info.steps += z
+      info.rounds += 1
+      new_loc = [new_loc[a] - transformation[a] for a in range(len(new_loc))]
+      info.x = new_loc[0]
+      info.y = new_loc[1]
+      return info, character, layout
+  print("Moved " + parsed["direction"] + " "+ str(steps) + " steps")
+  info.x = new_loc[0]
+  info.y = new_loc[1]
+  info.steps += z
+  info.rounds += 1
+  return info, character, layout
+
+  
 
 def hum_type(t, speed=150):
   for l in t:
@@ -40,6 +75,7 @@ def drop(layout, character, info, parsed):
     else:
       item = character.unique_inventory()[inventory_position-1]
       layout.place(x, y, item)
+      print("Dropping: " + item)
 
   elif "item" in parsed.keys(): #drop by item name 
     item = parsed["item"]
@@ -57,6 +93,7 @@ def drop(layout, character, info, parsed):
       else: # only drop one
         character.delete_item(item)
         layout.place(x, y, item)
+        print("Dropping: " + item)
       if item == character.equipped:
         if character.inventory !=[]:
           character.equipped = character.inventory[0]
@@ -104,8 +141,8 @@ def pickup(layout, character, info, parsed):
           print("Picking up ", str(num_space), " instead.")
           num_pickup = num_space
         for _ in range(num_pickup):
-          character.delete_item(item)
-          layout.place(x, y, item)
+          character.add_item(item)
+          layout.delete_item(x, y, item)
       else:
         layout.delete_item(x, y, item)
         character.add_item(item)
@@ -218,13 +255,13 @@ def gen_map(size_x, size_y):
   layout = clear_path(layout, [x_loc, y_loc])
   dig_position = [x_loc, y_loc]
   cleared = 0
-  want_cleared = int((squares)**0.5)
+  want_cleared = int((squares**0.5)/2.5)
   directions = ["n", "e", "s", "w"]
   direction_trans = [[1,0], [0,1], [-1,0], [0,-1]]
   while cleared<want_cleared:
     dig_remaining = want_cleared-cleared
     direction_dig = random.choice(directions)
-    dig_amount = int(norm_rand(0,max([1, dig_remaining]), dig_remaining//3, dig_remaining/10))
+    dig_amount = int(norm_rand(0,max([1, dig_remaining]), (dig_remaining**0.5)//1.5, dig_remaining/10))
     for _ in range(max([1, dig_amount])):
       new_loc = [sum(x) for x in zip(dig_position, direction_trans[directions.index(direction_dig)])]
       if new_loc[0] in range(size_x) and new_loc[1] in range(size_y):

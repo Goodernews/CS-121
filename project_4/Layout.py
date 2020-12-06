@@ -17,6 +17,9 @@ class Layout:
       valid_directions.remove("West")
     return valid_directions
 
+  def mine_valid(self, x, y):
+    pass
+
   def display(self, x, y):
     valid_directions = ["North", "East", "South", "West"]
     if not self.path_clear(x, y-1):
@@ -33,16 +36,16 @@ class Layout:
       print("Nothing to pickup")
     else:
       items = self.unique_items(x,y)
-      if len(items)>1:
+      count = self.count_items(x,y)
+      if sum(count)>1:
         print("There are several items you can pickup: ")
       else:
         print("There is one thing you can pick up: ")
-      counts = self.count_items(x,y)
       for z in range(len(items)):
-        if counts[z]>1:
-          print(items[z] + " (" + str(counts[z]) + ")")
+        if count[z]>1:
+          print(items[z].capitalize() + " (" + str(count[z]) + ")")
         else:
-          print(items[z])
+          print(items[z].capitalize())
 
   def place(self, x, y, item): # put item down
     self.df[x][y]["items"].append(item)
@@ -69,7 +72,7 @@ class Layout:
 
 
   def count_items(self, x,y):
-    return [self.df[x][y]["items"].count(y) for z in self.unique_items(x,y)]
+    return [self.df[x][y]["items"].count(z) for z in self.unique_items(x,y)]
 
   def items_to_pickup(self, x, y):
     return self.df[x][y]["items"]

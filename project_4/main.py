@@ -77,7 +77,7 @@ while True:
 
   print("--- \n\n")
   layout.display(info.x, info.y)
-
+  print("Location: " + str([info.x, info.y]))
   user_input = funcs.parse(input("Enter command: "), nlu_engine)
   print(user_input)
   #os.system('cls' if os.name == 'nt' else 'clear')
@@ -88,7 +88,7 @@ while True:
   
   
   if intent == "move":
-    funcs.move(info, character, layout, user_input)
+    info, character, layout = funcs.move(info, character, layout, user_input)
   elif intent == "mine":
     funcs.mine(info, character, layout, user_input)
     info.rounds +=1
