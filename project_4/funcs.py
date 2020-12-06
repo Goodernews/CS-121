@@ -1,3 +1,9 @@
+
+import time
+import random
+from snips_nlu import SnipsNLUEngine
+
+
 def hum_type(t, speed=150):
   for l in t:
     print(l, end='')
@@ -67,7 +73,7 @@ def pickup(map, character, parsed):
     print("You can't pick up anything else")
   elif "item" in parsed.keys(): #pickup by name
     item = parsed["item"]
-    if item not in items_to_pickup:
+    if item not in grabable:
       print("There is no " +  str(item) + " on the ground")
     else:
       if "countItems" in parsed.keys(): #user wants to pick up more than one

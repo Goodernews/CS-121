@@ -28,17 +28,11 @@ from snips_nlu.default_configs import CONFIG_EN
 
 from __future__ import unicode_literals, print_function
 
-#!wget 'https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/parser.yaml'
-
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/logo.txt
 logo = open("text/logo.txt", "r").read()
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/tutorial.txt
 tutorial = open("text/tutorial.txt", "r").read()
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/help.txt
 gen_help = open("text/help.txt", "r").read()
 
 
-!snips-nlu generate-dataset en parser.yaml > dataset.json
 
 with io.open("dataset.json") as f:
   dataset = json.load(f)
@@ -47,8 +41,10 @@ nlu_engine = nlu_engine.fit(dataset)
 
 ############# Custom classes
 
-import character
-import helper_funcs as funcs
+import Character
+import funcs
+import Map
+import Info
 
 
 #################
@@ -57,7 +53,7 @@ hum_type(logo, speed = 550)
 
 #Sets up game assuming no previous file
 if upload_game=="":
-  map, x_loc, y_loc = gen_map(size_x, size_y)
+  map, x_loc, y_loc = funcs.gen_map(size_x, size_y)
   map = Map(map)
   character = Character()
   info = Info(x_loc, y_loc) 
@@ -97,7 +93,7 @@ while True:
       info.round +=1
   elif intent == "mine":
     mine()
-      info.round +=1
+    info.round +=1
   elif intent == "help":
     print(gen_help)
   elif intent == "sell":

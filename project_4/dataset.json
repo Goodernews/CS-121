@@ -1,0 +1,1293 @@
+{
+  "entities": {
+    "Direction": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [
+            "up",
+            "forward",
+            "upwards",
+            "u",
+            "f"
+          ],
+          "value": "north"
+        },
+        {
+          "synonyms": [
+            "down",
+            "back",
+            "backwards",
+            "d",
+            "b"
+          ],
+          "value": "south"
+        },
+        {
+          "synonyms": [
+            "left",
+            "l",
+            "leftwards"
+          ],
+          "value": "west"
+        },
+        {
+          "synonyms": [
+            "right",
+            "r",
+            "rightwards"
+          ],
+          "value": "east"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
+    "displayCat": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [
+            "m"
+          ],
+          "value": "map"
+        },
+        {
+          "synonyms": [
+            "i"
+          ],
+          "value": "inventory"
+        },
+        {
+          "synonyms": [
+            "s"
+          ],
+          "value": "store"
+        },
+        {
+          "synonyms": [
+            "achievements"
+          ],
+          "value": "stats"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
+    "gameItems": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [],
+          "value": "all"
+        },
+        {
+          "synonyms": [
+            "bandaid",
+            "band-aid"
+          ],
+          "value": "band aid"
+        },
+        {
+          "synonyms": [],
+          "value": "rock"
+        },
+        {
+          "synonyms": [],
+          "value": "coal"
+        },
+        {
+          "synonyms": [],
+          "value": "gold"
+        },
+        {
+          "synonyms": [],
+          "value": "copper"
+        },
+        {
+          "synonyms": [],
+          "value": "diamond"
+        },
+        {
+          "synonyms": [
+            "basic pickaxe"
+          ],
+          "value": "basic pick axe"
+        },
+        {
+          "synonyms": [
+            "better pickaxe"
+          ],
+          "value": "better pick axe"
+        },
+        {
+          "synonyms": [
+            "apples"
+          ],
+          "value": "apple"
+        },
+        {
+          "synonyms": [
+            "bread"
+          ],
+          "value": "canned bread"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
+    "problemCats": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [],
+          "value": "move"
+        },
+        {
+          "synonyms": [],
+          "value": "inventory"
+        },
+        {
+          "synonyms": [],
+          "value": "mine"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
+    "snips/number": {}
+  },
+  "intents": {
+    "buy": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "buy "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "buy "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "get "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apples"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "order "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "copper"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "order "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "bread"
+            }
+          ]
+        }
+      ]
+    },
+    "drop": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "drop"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "leave"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "drop item in hand"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "drop "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "drop "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "inventNum",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "drop "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "5"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "drop inventory "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "inventNum",
+              "text": "3"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apples"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "leave "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "all"
+            },
+            {
+              "text": " items"
+            }
+          ]
+        }
+      ]
+    },
+    "eat": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "eat"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apples"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            },
+            {
+              "text": " of my "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "bread"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "inventNum",
+              "text": "ten"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat some "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "bread"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "eat my "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        }
+      ]
+    },
+    "end": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "End game"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "End"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "stop game"
+            }
+          ]
+        }
+      ]
+    },
+    "equip": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "hold "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "equip "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "band aid"
+            }
+          ]
+        }
+      ]
+    },
+    "heal": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "heal"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "heal "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "band aid"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "heal "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "bandaid"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "heal "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            },
+            {
+              "text": " of my "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "bread"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "mend with "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "patch up"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "patch up with "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        }
+      ]
+    },
+    "help": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "How do i "
+            },
+            {
+              "entity": "problemCats",
+              "slot_name": "problem",
+              "text": "move"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "help "
+            },
+            {
+              "entity": "problemCats",
+              "slot_name": "problem",
+              "text": "inventory"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "How to "
+            },
+            {
+              "entity": "problemCats",
+              "slot_name": "problem",
+              "text": "mine"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "help"
+            }
+          ]
+        }
+      ]
+    },
+    "mine": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "mine "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "mine "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "left"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "mine "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "two"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Back"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "strike "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "strike "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "left"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "strike "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "two"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Back"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "hit "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "hit "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "left"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "hit "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "repeats",
+              "text": "two"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Back"
+            }
+          ]
+        }
+      ]
+    },
+    "move": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "move "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "10"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "move "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "left"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "move "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "two"
+            },
+            {
+              "text": " steps "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Back"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "move "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "two"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "Back"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "go "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "3"
+            },
+            {
+              "text": " steps "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "b"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "go "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "down"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "go "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "up"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "three"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "go "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "twenty"
+            },
+            {
+              "text": " steps"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "go "
+            },
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "three"
+            },
+            {
+              "text": " paces"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "forward"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "noth"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "three"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "entity": "Direction",
+              "slot_name": "direction",
+              "text": "forward"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "steps",
+              "text": "twenty"
+            },
+            {
+              "text": " steps"
+            }
+          ]
+        }
+      ]
+    },
+    "open": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "open "
+            },
+            {
+              "entity": "displayCat",
+              "slot_name": "pullUp",
+              "text": "map"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "display "
+            },
+            {
+              "entity": "displayCat",
+              "slot_name": "pullUp",
+              "text": "inventory"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pull up "
+            },
+            {
+              "entity": "displayCat",
+              "slot_name": "pullUp",
+              "text": "s"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "show "
+            },
+            {
+              "entity": "displayCat",
+              "slot_name": "pullUp",
+              "text": "store"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "entity": "displayCat",
+              "slot_name": "pullUp",
+              "text": "store"
+            }
+          ]
+        }
+      ]
+    },
+    "pickup": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "pickup"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pickup "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pickup "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pickup "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "pickup "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " of "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "copper"
+            }
+          ]
+        }
+      ]
+    },
+    "save": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "Save game"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Save"
+            }
+          ]
+        }
+      ]
+    },
+    "sell": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "sell"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "sell item in hand"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "sell "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "apple"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "sell "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "inventNum",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "sell "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "sell "
+            },
+            {
+              "entity": "snips/number",
+              "slot_name": "countItems",
+              "text": "ten"
+            },
+            {
+              "text": " of my "
+            },
+            {
+              "entity": "gameItems",
+              "slot_name": "item",
+              "text": "gold"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "language": "en"
+}
