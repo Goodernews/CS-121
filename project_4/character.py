@@ -73,9 +73,9 @@ class Character:
       for x in range(len(print_inv_items)):
         if counts[x]>1: # more than one of an item
           if type(print_inv_items[x]) is list:
-            print(print_inv_items[x][0] + " X " + str(counts[x]))
+            print(print_inv_items[x][0] + " (" + str(counts[x])+ ")")
           else:
-            print(print_inv_items[x] + " X " + str(counts[x]))
+            print(print_inv_items[x] + " (" + str(counts[x])+ ")")
         else:
           if type(print_inv_items[x]) is list:
             print(print_inv_items[x])

@@ -1,6 +1,5 @@
 import time
 import random
-from snips_nlu import SnipsNLUEngine
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
@@ -31,19 +30,19 @@ def hum_type(t, speed=150):
     time.sleep(random.random()*10.0/speed)
   print('')
 
-def drop(map, character, info, parsed):
-  x = 0
-  y = 0 #need position
+def drop(layout, character, info, parsed):
+  x = info.x
+  y = info.y #need position
   if "inventNum" in parsed.keys(): #dropping by inventory number
     inventory_position = parsed["inventNum"]
     if inventory_position>len(character.unique_inventory()): #out of range
       print("There isn't a " + str(inventory_position) + "th item in your inventory")
     else:
       item = character.unique_inventory()[inventory_position-1]
-      map.place(x, y, item)
+      layout.place(x, y, item)
 
   elif "item" in parsed.keys(): #drop by item name 
-    item = parsed[item]
+    item = parsed["item"]
     if bool(set(character.unique_inventory()) & set([item])): # item in inventory
       if "countItems" in parsed.keys(): #user wants to eat more than one
         num_item = character.count_items()[character.unique_inventory().index(item)]
@@ -54,10 +53,10 @@ def drop(map, character, info, parsed):
           num_drop = num_item
         for _ in range(num_drop):
           character.delete_item(item)
-          map.place(x, y, item)
+          layout.place(x, y, item)
       else: # only drop one
         character.delete_item(item)
-        map.place(x, y, item)
+        layout.place(x, y, item)
       if item == character.equipped:
         if character.inventory !=[]:
           character.equipped = character.inventory[0]
@@ -74,7 +73,7 @@ def drop(map, character, info, parsed):
       else:
         print("Dropped: ", item)
       character.delete_item(item)
-      map.place(x, y, item)
+      layout.place(x, y, item)
 
       if character.inventory==[]: #if afterwards no more items
         character.equipped = None
@@ -84,10 +83,10 @@ def drop(map, character, info, parsed):
       print("Your inventory is already cleared")
 
 
-def pickup(layout, character, parsed):
-  x = 0
-  y = 0
-  grabable = layout.items_to_pickup()
+def pickup(layout, character, info, parsed):
+  x = info.x
+  y = info.y
+  grabable = layout.items_to_pickup(x, y)
   if grabable==[]:
     print("There is nothing to pick up")
   elif len(character.inventory)==character.max_inventory:
@@ -132,7 +131,7 @@ def pickup(layout, character, parsed):
         
 #@title Helper functions
 
-def parse(text): #parses user input 
+def parse(text, nlu_engine): #parses user input 
   parsing = nlu_engine.parse(text) #clean string
   intent = parsing["intent"]["intentName"]
   entities = [x["slotName"] for x in parsing["slots"]]

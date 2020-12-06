@@ -40,7 +40,7 @@ class Layout:
       counts = self.count_items(x,y)
       for z in range(len(items)):
         if counts[z]>1:
-          print(items[z] + " X " + str(counts[z]))
+          print(items[z] + " (" + str(counts[z]) + ")")
         else:
           print(items[z])
 
@@ -59,7 +59,13 @@ class Layout:
     return self.df[x][y]["walkable"] #checks squeate
 
   def unique_items(self, x,y):
-    return list(set(self.df[x][y]["items"]))
+    lst = []
+    for item in self.df[x][y]["items"]:
+      if type(item) is list:
+        lst.append(item[0])
+      else:
+        lst.append(item)
+    return list(set(lst))
 
 
   def count_items(self, x,y):

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals, print_function
+
 ##### Tuning
 
 size_x = 25 #
@@ -22,19 +24,13 @@ import json
 from snips_nlu import SnipsNLUEngine
 from snips_nlu.default_configs import CONFIG_EN
 
+#logo = open("text\logo.txt", "r").read()
+#tutorial = open("text\tutorial.txt", "r").read()
+#gen_help = open("text\help.txt", "r").read()
 
 
 
-
-from __future__ import unicode_literals, print_function
-
-logo = open("text/logo.txt", "r").read()
-tutorial = open("text/tutorial.txt", "r").read()
-gen_help = open("text/help.txt", "r").read()
-
-
-
-with io.open("dataset.json") as f:
+with io.open("project_4\dataset.json") as f:
   dataset = json.load(f)
 nlu_engine = SnipsNLUEngine(config=CONFIG_EN)
 nlu_engine = nlu_engine.fit(dataset)
@@ -52,7 +48,7 @@ import Character
 Character = Character.Character
 #################
 
-funcs.hum_type(logo, speed = 550)
+#funcs.hum_type(logo, speed = 550)
 
 #Sets up game assuming no previous file
 if upload_game=="":
@@ -65,7 +61,8 @@ else:
   #layout, character, info = funcs.open_game(upload_game)
 
 if upload_game=="": # intro and tutorial
-    funcs.hum_type(tutorial, speed=500)
+    #
+    # funcs.hum_type(tutorial, speed=500)
     input()
 
 while True: 
@@ -81,8 +78,9 @@ while True:
   print("--- \n\n")
   layout.display(info.x, info.y)
 
-  user_input = funcs.parse(input("Enter command: "))
-  os.system('cls' if os.name == 'nt' else 'clear')
+  user_input = funcs.parse(input("Enter command: "), nlu_engine)
+  print(user_input)
+  #os.system('cls' if os.name == 'nt' else 'clear')
   if user_input is None:
     intent = None
   else:
@@ -130,6 +128,8 @@ while True:
       print("Please specify if you want to open: map, inventory, store, or stats")
   elif intent == "drop":
     funcs.drop(layout,character, info, user_input)
+  elif intent == "pickup":
+    funcs.pickup(layout,character, info, user_input)
   elif intent == "eat":
     character.eat(user_input)
   elif intent == "equip":
