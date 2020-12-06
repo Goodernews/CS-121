@@ -21,6 +21,27 @@ utterances:
   - "[direction](forward)" 
   - "[direction](noth) [steps](three)"
   - "[direction](forward) [steps](twenty) steps"
+  
+#move intent
+---
+type: intent
+name: mine
+
+slots:
+  - name: direction
+    entity: Direction
+  - name: repeats
+    entity : snips/number
+utterances:
+  - mine [direction](Forward) [repeats](10)
+  - mine [direction](left)
+  - mine [repeats](two) [direction](Back)
+  - strike [direction](Forward) [repeats](10)
+  - strike [direction](left)
+  - strike [repeats](two) [direction](Back)
+  - hit [direction](Forward) [repeats](10)
+  - hit [direction](left)
+  - hit [repeats](two) [direction](Back)
 
 # move Entity
 ---
