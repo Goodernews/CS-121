@@ -30,12 +30,12 @@ from __future__ import unicode_literals, print_function
 
 #!wget 'https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/parser.yaml'
 
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/logo.txt
-logo = open("logo.txt", "r").read()
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/tutorial.txt
-tutorial = open("tutorial.txt", "r").read()
-#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/help.txt
-gen_help = open("help.txt", "r").read()
+#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/logo.txt
+logo = open("text/logo.txt", "r").read()
+#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/tutorial.txt
+tutorial = open("text/tutorial.txt", "r").read()
+#!wget https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/text/help.txt
+gen_help = open("text/help.txt", "r").read()
 
 
 !snips-nlu generate-dataset en parser.yaml > dataset.json
@@ -47,6 +47,8 @@ nlu_engine = nlu_engine.fit(dataset)
 
 ############# Custom classes
 
+import character
+import helper_funcs as funcs
 
 
 #################
@@ -63,7 +65,7 @@ else:
   map, character, info = open_game(upload_game)
 
 if upload_game=="": # intro and tutorial
-    hum_type(tutorial, speed=500)
+    funcs.hum_type(tutorial, speed=500)
     input()
 
 while True: 
