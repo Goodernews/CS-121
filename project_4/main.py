@@ -5,6 +5,9 @@ size_y = 25 #
 upload_game = "" # Upload a map
 
 ######### Import and setup
+#!pip install snips-nlu
+#!snips-nlu download en
+
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
@@ -22,8 +25,7 @@ from snips_nlu.default_configs import CONFIG_EN
 
 
 
-!pip install snips-nlu
-!snips-nlu download en
+
 from __future__ import unicode_literals, print_function
 
 #!wget 'https://raw.githubusercontent.com/Goodernews/CS-121/main/project_4/parser.yaml'
