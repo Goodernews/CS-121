@@ -1,8 +1,29 @@
-
 import time
 import random
 from snips_nlu import SnipsNLUEngine
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
 
+
+
+
+break_items = ["apple"]
+mine_items = ["basic pick axe"]
+
+sellable = ["apple", "canned bread", "gold"]
+
+mineable = ["diamond", "gold", "silver" "iron", "cobble", "coal", None] 
+mine_chances = [0.02, 0.03, 0.04, 0.05, 0.2, 0.1, 0.66]
+
+def mine(info, character, layout, parsed):
+  pass
+
+def open_game(file_location):
+  pass
+
+def move(info, character, layout, parsed):
+  pass
 
 def hum_type(t, speed=150):
   for l in t:
@@ -31,7 +52,7 @@ def drop(map, character, info, parsed):
           print("You don't have ", str(num_drop), " in your inventory.")
           print("Dropping ", str(num_item), " instead.")
           num_drop = num_item
-        for z in range(num_drop):
+        for _ in range(num_drop):
           character.delete_item(item)
           map.place(x, y, item)
       else: # only drop one
@@ -63,10 +84,10 @@ def drop(map, character, info, parsed):
       print("Your inventory is already cleared")
 
 
-def pickup(map, character, parsed):
+def pickup(layout, character, parsed):
   x = 0
   y = 0
-  grabable = map.items_to_pickup()
+  grabable = layout.items_to_pickup()
   if grabable==[]:
     print("There is nothing to pick up")
   elif len(character.inventory)==character.max_inventory:
@@ -83,18 +104,18 @@ def pickup(map, character, parsed):
           print("You don't have space for" + str(num_pickup) + " items in your inventory.")
           print("Picking up ", str(num_space), " instead.")
           num_pickup = num_space
-        for z in range(num_pickup):
+        for _ in range(num_pickup):
           character.delete_item(item)
-          map.place(x, y, item)
+          layout.place(x, y, item)
       else:
-        map.delete_item(x, y, item)
+        layout.delete_item(x, y, item)
         character.add_item(item)
 
 
   else: #pickup first item
     if "countItems" not in parsed.keys():
       item = grabable[0]
-      map.delete_item(x, y, item)
+      layout.delete_item(x, y, item)
       character.add_item(item)
       print("Picked up: " + str(item))
     else: #pickup more than one
@@ -104,10 +125,10 @@ def pickup(map, character, parsed):
         print("You don't have space for" + str(num_pickup) + " items in your inventory.")
         print("Picking up " + str(num_space) + " items instead.")
         num_pickup = num_space
-      for z in range(num_pickup):
+      for _ in range(num_pickup):
         item = grabable[0] 
         character.delete_item(item)
-        map.place(x, y, item)
+        layout.place(x, y, item)
         
 #@title Helper functions
 
@@ -175,18 +196,18 @@ def norm_rand(lower,
 
 #@title Generate map
 
-def clear_path(map, loc, seen=False):
+def clear_path(layout, loc, seen=False):
   x, y = loc[0], loc[1]
-  map[x][y]["health"] = 0
-  map[x][y]["walkable"] = True
-  map[x][y]["Seen"] = seen
-  return map
+  layout[x][y]["health"] = 0
+  layout[x][y]["walkable"] = True
+  layout[x][y]["Seen"] = seen
+  return layout
 
 
 def gen_map(size_x, size_y):
-  map = pd.DataFrame(columns=list(range(size_x)))
+  layout = pd.DataFrame(columns=list(range(size_x)))
   for i in range(size_y):
-    map.loc[i] = [{"seen":False, "walkable":False, "items":[], "health":100, "damage":0}]*size_x
+    layout.loc[i] = [{"seen":False, "walkable":False, "items":[], "health":100, "damage":0}]*size_x
   # blank map created
 
   #choose start position
@@ -195,7 +216,7 @@ def gen_map(size_x, size_y):
   y_loc = int(norm_rand(0,size_y, size_y//2, size_y/10))
 
   #tunnel out clearing
-  map = clear_path(map, [x_loc, y_loc])
+  layout = clear_path(layout, [x_loc, y_loc])
   dig_position = [x_loc, y_loc]
   cleared = 0
   want_cleared = int((squares)**0.5)
@@ -205,11 +226,11 @@ def gen_map(size_x, size_y):
     dig_remaining = want_cleared-cleared
     direction_dig = random.choice(directions)
     dig_amount = int(norm_rand(0,max([1, dig_remaining]), dig_remaining//3, dig_remaining/10))
-    for z in range(max([1, dig_amount])):
+    for _ in range(max([1, dig_amount])):
       new_loc = [sum(x) for x in zip(dig_position, direction_trans[directions.index(direction_dig)])]
       if new_loc[0] in range(size_x) and new_loc[1] in range(size_y):
         dig_position = new_loc
-        map = clear_path(map, dig_position)
+        layout = clear_path(layout, dig_position)
         cleared +=1
       else:
         break
@@ -217,12 +238,12 @@ def gen_map(size_x, size_y):
   random_drop_num = int(norm_rand(0,squares, (squares**0.5)//6, (squares**0.5)//15))
   random_drop_items = ["apple", "diamond", "bandaid", "iron", "coal", "cobble"]
   random_drop_freqs = [0.2, 0.01, 0.2, 0.1, 0.05, 0.44]
-  for z in range(random_drop_num):
+  for _ in range(random_drop_num):
     rand_item = np.random.choice(random_drop_items, p = random_drop_freqs)
     rand_x = random.randint(0, size_x-1)
     rand_y = random.randint(0, size_y-1)
-    map[rand_x][rand_y]["items"].append(rand_item) 
+    layout[rand_x][rand_y]["items"].append(rand_item) 
 
 
-  return map, x_loc, y_loc
+  return layout, x_loc, y_loc
 

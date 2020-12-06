@@ -1,9 +1,21 @@
-class Map:
+class Layout:
   def __init__(self,
                df):
     self.df = df
     self.max_x = max(df.columns)
     self.max_y = max(df.index)
+
+  def walk_valid(self, x, y):
+    valid_directions = ["North", "East", "South", "West"]
+    if not self.path_clear(x, y-1):
+      valid_directions.remove("North")
+    if not self.path_clear(x, y+1):
+      valid_directions.remove("South")
+    if not self.path_clear(x+1, y):
+      valid_directions.remove("East")
+    if not self.path_clear(x-1, y):
+      valid_directions.remove("West")
+    return valid_directions
 
   def display(self, x, y):
     valid_directions = ["North", "East", "South", "West"]

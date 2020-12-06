@@ -41,24 +41,28 @@ nlu_engine = nlu_engine.fit(dataset)
 
 ############# Custom classes
 
-import Character
+#from Character as Character
 import funcs
-import Map
+import Layout
+Layout = Layout.Layout
 import Info
-
-
+Info = Info.Info
+import Store
+import Character
+Character = Character.Character
 #################
 
-hum_type(logo, speed = 550)
+funcs.hum_type(logo, speed = 550)
 
 #Sets up game assuming no previous file
 if upload_game=="":
-  map, x_loc, y_loc = funcs.gen_map(size_x, size_y)
-  map = Map(map)
+  layout, x_loc, y_loc = funcs.gen_map(size_x, size_y)
+  layout = Layout(layout)
   character = Character()
   info = Info(x_loc, y_loc) 
 else: 
-  map, character, info = open_game(upload_game)
+  pass
+  #layout, character, info = funcs.open_game(upload_game)
 
 if upload_game=="": # intro and tutorial
     funcs.hum_type(tutorial, speed=500)
@@ -75,9 +79,9 @@ while True:
   character.display()
 
   print("--- \n\n")
-  map.display(info.x, info.y)
+  layout.display(info.x, info.y)
 
-  user_input = parse(input("Enter command: "))
+  user_input = funcs.parse(input("Enter command: "))
   os.system('cls' if os.name == 'nt' else 'clear')
   if user_input is None:
     intent = None
@@ -86,28 +90,24 @@ while True:
   
   
   if intent == "move":
-    if not check_move(intent[1:]): #move is invalid
-      print("You cannot move ", intent[1], ". Check ___")
-    else: # move valid
-      #move
-      info.round +=1
+    funcs.move(info, character, layout, user_input)
   elif intent == "mine":
-    mine()
-    info.round +=1
+    funcs.mine(info, character, layout, user_input)
+    info.rounds +=1
   elif intent == "help":
     print(gen_help)
   elif intent == "sell":
-    Store.sell(character, user_input, hash(str(map.df.to_numpy().tolist()))+info.round) #uses current round and map to fix seed
+    Store.sell(character, user_input, hash(str(layout.df.to_numpy().tolist()))+info.rounds) #uses current round and map to fix seed
   elif intent == "buy":
-    Store.buy(character, user_input, hash(str(map.df.to_numpy().tolist()))+info.round)
+    Store.buy(character, user_input, hash(str(layout.df.to_numpy().tolist()))+info.rounds)
   
   elif intent == "save":
     while True:
       file_out = input("Input a file path or return to exit")
       if file_out== "":
         break
-      if bool(re.search(".+(\.csv)$", file_out)):
-        save_game(file_out, map, character, info)
+      if bool(re.search(r".+(\.csv)$", file_out)):
+        #save_game(file_out, layout, character, info)
         print("Game saved")
         break
       else:
@@ -123,13 +123,13 @@ while True:
     elif user_input["pullUp"]=="inventory":
       character.print_inventory()
     elif user_input["pullUp"]=="store":
-      Store.display(hash(str(map.df.to_numpy().tolist()))+info.round)
+      Store.display(hash(str(layout.df.to_numpy().tolist()))+info.rounds)
     elif user_input["pullUp"]=="stats":
       info.display()
     else:
       print("Please specify if you want to open: map, inventory, store, or stats")
   elif intent == "drop":
-    drop(map,character, info, user_input)
+    funcs.drop(layout,character, info, user_input)
   elif intent == "eat":
     character.eat(user_input)
   elif intent == "equip":
