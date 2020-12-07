@@ -26,12 +26,12 @@ from snips_nlu.default_configs import CONFIG_EN
 from pathlib import Path
 
 
-
 logo = Path('project_4\logo.txt').read_text()
-#print(logo)
-gen_help = Path("project_4\help.txt").read_text()
-#print(gen_help)
-welcome = open('project_4\welcome.txt', "r").read()
+#tutorial = Path('project_4\tutorial.txt').read_text()
+
+#print(tutorial)
+#gen_help = Path("project_4\help.txt").read_text()
+
 
 
 with io.open("project_4\dataset.json") as f:
@@ -65,9 +65,9 @@ else:
   #layout, character, info = funcs.open_game(upload_game)
 
 if upload_game=="": # intro and tutorial
-  print("\n\n\n")
-  funcs.hum_type(welcome, speed=5000)
-  input("Press return to Start ")
+  #funcs.hum_type(tutorial, speed=500)
+  #input()
+  pass
 
 while True: 
   if character.health<=0:
@@ -97,7 +97,6 @@ while True:
     info.rounds +=1
   elif intent == "help":
     print(gen_help)
-    input("Press return to close")
   elif intent == "sell":
     Store.sell(character, user_input, hash(str(layout.df.to_numpy().tolist()))+info.rounds) #uses current round and map to fix seed
   elif intent == "buy":

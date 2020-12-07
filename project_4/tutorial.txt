@@ -1,0 +1,35 @@
+/$$$$$$$$          /$$                         /$$           /$$
+|__  $$__/         | $$                        |__/          | $$
+   | $$ /$$   /$$ /$$$$$$    /$$$$$$   /$$$$$$  /$$  /$$$$$$ | $$
+   | $$| $$  | $$|_  $$_/   /$$__  $$ /$$__  $$| $$ |____  $$| $$
+   | $$| $$  | $$  | $$    | $$  \ $$| $$  \__/| $$  /$$$$$$$| $$
+   | $$| $$  | $$  | $$ /$$| $$  | $$| $$      | $$ /$$__  $$| $$
+   | $$|  $$$$$$/  |  $$$$/|  $$$$$$/| $$      | $$|  $$$$$$$| $$
+   |__/ \______/    \___/   \______/ |__/      |__/ \_______/|__/
+
+
+
+Welcome to Mine It: A Text Adventure  
+   
+Goal: Clear the area and make some money! 
+
+---
+
+Commands:
+
+This game contains several commands, which do not need to be typed exactly. Synonyms 
+and additional information can be passed through. To see more information type: "help"
+
+- Pick up <item>
+  - Drop <item>
+  - Pick up <item>
+  - Move <direction>
+  - Mine <direction>
+  - Eat <item>
+  - Equip <item>
+  - Heal with <item>
+  - Help
+  
+ 
+ 
+(Press return to start game)
