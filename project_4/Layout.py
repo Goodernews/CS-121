@@ -22,13 +22,13 @@ class Layout:
 
   def display(self, x, y):
     valid_directions = ["North", "East", "South", "West"]
-    if not self.path_clear(x, y-1):
-      valid_directions.remove("North")
-    if not self.path_clear(x, y+1):
-      valid_directions.remove("South")
     if not self.path_clear(x+1, y):
-      valid_directions.remove("East")
+      valid_directions.remove("North")
     if not self.path_clear(x-1, y):
+      valid_directions.remove("South")
+    if not self.path_clear(x, y+1):
+      valid_directions.remove("East")
+    if not self.path_clear(x, y-1):
       valid_directions.remove("West")
   
     
