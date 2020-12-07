@@ -42,10 +42,21 @@ def move(info, character, layout, parsed):
     if layout.path_clear(new_loc[0],new_loc[1]):
       info.x = new_loc[0]
       info.y = new_loc[1]
+      energy_used += norm_rand(0,5, 2, 1)
     else:
       print("Only moved: " + str(z) + " steps.")
+      print("Used " + str(int(energy_used))+ " energy")
       info.steps += z
+      if energy_used>character.energy:
+        overextended = int(energy_used) - character.energy
+        print("You overextended your energy by: " + str(overextended))
+        print("You lost " + str(int(1.5*overextended)) + "health")
+        character.energy = 0
+        character.health -=int(1.5*overextended)
+      else:
+        character.energy -= int(energy_used)
       info.rounds += 1
+
       new_loc = [new_loc[a] - transformation[a] for a in range(len(new_loc))]
       info.x = new_loc[0]
       info.y = new_loc[1]
