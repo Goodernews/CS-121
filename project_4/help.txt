@@ -177,8 +177,9 @@ Due to a time crunch several features were left out
 - Saving and loading game
   - Dataframe structure was created
   - character, map, and information objects were near completion of being saveable.
+- A map of current location
 
 Known bugs:
 - Move parsed as mining
   - Occasionally the syntax "move forward 3" is parsed for mining.
- 
+- Movement through walls

@@ -7,7 +7,7 @@ def sell_prices(price_seed): # changes base prices based on the round number
     np.random.seed(seed=price_seed)
     pass
 def display( price_seed):
-  print("Welcome to the store! Prices change every ")
+  print("Welcome to the store! Prices change every round")
   pass #Sell only items
 
 def sell(character, parsed, price_seed):
