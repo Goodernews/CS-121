@@ -5,20 +5,26 @@ class Layout:
     self.max_x = max(df.columns)
     self.max_y = max(df.index)
 
-  def walk_valid(self, x, y):
-    valid_directions = ["North", "East", "South", "West"]
-    if not self.path_clear(x, y-1):
-      valid_directions.remove("North")
-    if not self.path_clear(x, y+1):
-      valid_directions.remove("South")
-    if not self.path_clear(x+1, y):
-      valid_directions.remove("East")
-    if not self.path_clear(x-1, y):
-      valid_directions.remove("West")
-    return valid_directions
+
+
+  def mine_ok(self, x, y):
+      if y>self.max_y or x>self.max_x: #out of range
+        return False
+      if y<0 or x<0: #out of range
+        return False
+      return self.df[x][y]["health"]>0 #checks squeate
 
   def mine_valid(self, x, y):
-    pass
+    valid_directions = ["North", "East", "South", "West"]
+    if not self.mine_ok(x, y-1):
+      valid_directions.remove("North")
+    if not self.mine_ok(x, y+1):
+      valid_directions.remove("South")
+    if not self.mine_ok(x+1, y):
+      valid_directions.remove("East")
+    if not self.mine_ok(x-1, y):
+      valid_directions.remove("West")
+    return valid_directions
 
   def display(self, x, y):
     valid_directions = ["North", "East", "South", "West"]
@@ -63,6 +69,18 @@ class Layout:
     if y<0 or x<0: #out of range
       return False
     return self.df[x][y]["walkable"] #checks squeate
+
+  def walk_valid(self, x, y):
+    valid_directions = ["North", "East", "South", "West"]
+    if not self.path_clear(x, y-1):
+      valid_directions.remove("North")
+    if not self.path_clear(x, y+1):
+      valid_directions.remove("South")
+    if not self.path_clear(x+1, y):
+      valid_directions.remove("East")
+    if not self.path_clear(x-1, y):
+      valid_directions.remove("West")
+    return valid_directions
 
   def unique_items(self, x,y):
     lst = []

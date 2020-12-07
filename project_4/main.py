@@ -82,8 +82,9 @@ while True:
   print("--- \n\n")
   layout.display(info.x, info.y)
   user_input = funcs.parse(input("Enter command: "), nlu_engine)
-  print(user_input)
-  #os.system('cls' if os.name == 'nt' else 'clear')
+  #print(user_input) #check parsed
+  print("Location: " + str([info.x, info.y]))
+  os.system('cls' if os.name == 'nt' else 'clear')
   if user_input is None:
     intent = None
   else:

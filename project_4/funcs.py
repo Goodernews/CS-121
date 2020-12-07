@@ -12,11 +12,62 @@ mine_items = ["basic pick axe"]
 
 sellable = ["apple", "canned bread", "gold"]
 
-mineable = ["diamond", "gold", "silver" "iron", "cobble", "coal", None] 
-mine_chances = [0.02, 0.03, 0.04, 0.05, 0.2, 0.1, 0.66]
+
 
 def mine(info, character, layout, parsed):
-  pass
+  if "basic pick axe" != character.equipped[0]:
+    print("pick axe not equipped")
+    return info, character, layout
+  
+  mine_objects = ["diamond", "gold", "silver", "iron", "cobble", None]
+  mine_props =[0.05, 0.1, 0.125, 0.175, 0.20, 0.35]
+  x = info.x
+  y = info.y
+  move_directions = layout.walk_valid(x, y)
+  direct_mine = parsed["direction"]
+  if direct_mine.capitalize() not in move_directions:
+    print("You cannot mine in that direction")
+    return info, character, layout
+  directions = ["north", "east", "south", "west"]
+  direction_trans = [[1,0], [0,1], [-1,0], [0,-1]]
+  transformation = direction_trans[directions.index(parsed["direction"])]
+  hit_loc = [sum(a) for a in zip([x,y], transformation)]
+  if "repeats" not in parsed.keys():
+    repeats = 1
+  else: #num hits if specified
+    repeats = parsed["repeats"]
+  energy_used = 0
+  for z in range(1, 1+repeats):
+    if layout[hit_loc[0]][hit_loc[1]]["health"] <0:
+      layout[hit_loc[0]][hit_loc[1]]["walkable"] = True
+      print("Mined in " + str(z) + " strikes.")
+      print("Energy used: " + str(energy_used))
+      if character.energy < energy_used:
+        overextended = int(energy_used) - character.energy
+        print("You overextended your energy by: " + str(overextended))
+        print("You lost " + str(int(1.5*overextended)) + "health")
+        character.energy = 0
+        character.health -=int(1.5*overextended)
+    else:
+      item = np.random.choice(mine_objects, p = mine_props)
+      energy_used += norm_rand(0,7, 3.5, 1)
+      layout[hit_loc[0]][hit_loc[1]]["health"] -= norm_rand(5, 25, 13.5, 5)
+      if item is None:
+        print("Nothing mined")
+      else:
+        layout.place(x,y, item)
+        print("Mined: " + str(item))
+
+  print("Energy used: " + str(energy_used))
+  if character.energy < energy_used:
+    overextended = int(energy_used) - character.energy
+    print("You overextended your energy by: " + str(overextended))
+    print("You lost " + str(int(1.5*overextended)) + "health")
+    character.energy = 0
+    character.health -=int(1.5*overextended)
+
+
+    
 
 def open_game(file_location):
   pass
@@ -276,18 +327,18 @@ def gen_map(size_x, size_y):
   layout = clear_path(layout, [x_loc, y_loc])
   dig_position = [x_loc, y_loc]
   cleared = 0
-  want_cleared = int((squares**0.5)/2.5)
+  want_cleared = 15
   directions = ["n", "e", "s", "w"]
-  direction_trans = [[1,0], [0,1], [-1,0], [0,-1]]
+  direction_trans = [[0,1], [1,0], [0,-1], [-1, 0]]
   while cleared<want_cleared:
     dig_remaining = want_cleared-cleared
     direction_dig = random.choice(directions)
-    dig_amount = int(norm_rand(0,max([1, dig_remaining]), (dig_remaining**0.5)//1.5, dig_remaining/10))
+    dig_amount = int(norm_rand(0,max([1, dig_remaining]), (dig_remaining**0.5)/1.5, 2))
     for _ in range(max([1, dig_amount])):
       new_loc = [sum(x) for x in zip(dig_position, direction_trans[directions.index(direction_dig)])]
       if new_loc[0] in range(size_x) and new_loc[1] in range(size_y):
         dig_position = new_loc
-        layout = clear_path(layout, dig_position)
+        layout = clear_path(layout, dig_position, seen=True)
         cleared +=1
       else:
         break

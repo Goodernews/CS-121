@@ -20,7 +20,7 @@ class Info:
 
     def display(self):
         print("Round: " + str(self.rounds))
-        print("Curentlly at: " + str(self.x) + ", " + str(self.y))
+        print("Curentlly at: [" + str(self.x) + ", " + str(self.y) + "]")
 
 
     def achievments(self):

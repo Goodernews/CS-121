@@ -120,6 +120,10 @@ class Character:
     if self.energy == self.max_energy:
       print("Your energy is already maxxed out")
       return
+    if "item" in parsed.keys() and not bool(set(self.unique_inventory()) & set(edible)):
+      print("Item is not in your inventory")
+      return
+
     if bool(set(self.unique_inventory()) & set(edible)): #check if edible foods in inventory
       if "item" in parsed.keys(): #check if eat by specific item
         item = parsed["item"]
