@@ -100,11 +100,14 @@ while True:
     print(gen_help)
     input("Press return to close")
   elif intent == "sell":
+    print("Selling not implemented")
     Store.sell(character, user_input, hash(str(layout.df.to_numpy().tolist()))+info.rounds) #uses current round and map to fix seed
   elif intent == "buy":
+    print("Buying not implemented")
     Store.buy(character, user_input, hash(str(layout.df.to_numpy().tolist()))+info.rounds)
   
   elif intent == "save":
+    print("Not impelemented completley, but there is a regex example")
     while True:
       file_out = input("Input a file path or return to exit")
       if file_out== "":
@@ -118,11 +121,15 @@ while True:
 
   elif intent == "end":
     # Might need to confirm, make intent
-    print("Ending game")
-    break
+    end_input = input("Press return to close game, or enter another key then return to continue")
+    if end_input=="":
+      print("Ending game")
+      break
+    else:
+      funcs.hum_type("Continuing game...")
   elif intent == "open":
     if user_input["pullUp"]=="map":
-      pass
+      print("Not impemented")
     elif user_input["pullUp"]=="inventory":
       character.print_inventory()
     elif user_input["pullUp"]=="store":

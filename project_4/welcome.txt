@@ -34,11 +34,13 @@ This game contains several commands, which do not need to be typed exactly. Syno
 and additional information can be passed through. To see more information type: "help"
 
 - Pick up <item>
-  - Drop <item>
-  - Pick up <item>
-  - Move <direction>
-  - Mine <direction>
-  - Eat <item>
-  - Equip <item>
-  - Heal with <item>
-  - Help
+- Drop <item>
+- Pick up <item>
+- Move <direction>
+- Mine <direction>
+- Eat <item>
+- Equip <item>
+- Heal with <item>
+- Help
+
+

@@ -166,3 +166,19 @@ To end game use one of the following syntaxes:
   - End game
   - End
   - Stop game
+
+Unimplemented features:
+
+Due to a time crunch several features were left out
+
+- Game win condtion by clearing map
+- Buying and selling
+  - Several sub functions were created. Such as one to maintain random buy sell prices for a round.
+- Saving and loading game
+  - Dataframe structure was created
+  - character, map, and information objects were near completion of being saveable.
+
+Known bugs:
+- Move parsed as mining
+  - Occasionally the syntax "move forward 3" is parsed for mining.
+ 

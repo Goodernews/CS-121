@@ -46,7 +46,53 @@ class Character:
     return save_dict
 
   def heal(self, parsed):
-    pass
+    if not bool(set(healing) & set(self.unique_inventory())):
+      print("There are no items in your inventory to heal")
+      return
+    if self.health==self.max_health:
+      print("Your health is already maxxed out")
+      return
+    if "item" in parsed.keys(): #check if eat by specific item
+        item = parsed["item"]
+        if item in healing: # item is edible
+          if "countItems" in parsed.keys(): #user wants to eat more than one
+            num_item = self.count_items()[self.unique_inventory().index(item)]
+            num_eat = parsed["countItems"]
+            if num_item<num_eat: # User asks to eat more than in inventory
+              print("You don't have ", str(num_eat), " in your inventory.")
+              print("Eating ", str(num_item), " instead.")
+              num_eat = num_item
+            for x in range(int(num_eat)):
+              self.heal_item(item)
+            print("Used " + str(x) + " " + str(item))
+          else:
+            self.heal_item(item)
+            print("Used 1 " + str(item))
+        else:
+          print("That won't heal you")
+    elif "inventNum" in parsed.keys(): #check if eat by inventory number 
+      inventory_position = parsed["inventNum"]
+      if inventory_position>len(self.unique_inventory()):
+        print("That isn't a ", str(inventory_position), "th item in your inventory")
+      else:
+        item = self.unique_inventory()[inventory_position-1]
+        if item in healing: # item is edible
+          self.heal_item(item)
+          print("Used 1 " + str(item))
+        else:
+          print("Hmmm, you can't heal with a", item) 
+    else: #eat first edible thing
+      item = list(set(self.unique_inventory())&set(healing))[0]
+      self.eat_item(item)
+      print("Healed with 1 " + str(item))
+    print("There's nothing to heal with in your inventory")
+
+
+  def heal_item(self, item): #eats one checked item
+    self.delete_item(item)
+    self.health += healing_item[healing.index(item)]
+    if self.health > self.max_health:
+      self.health = self.max_health
 
   def display(self):
     print("Health: " + str(self.health) + "/" + str(self.max_health))
