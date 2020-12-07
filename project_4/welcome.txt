@@ -1,3 +1,5 @@
+
+
  __      __       .__                                  __             __  .__                     .__               
 /  \    /  \ ____ |  |   ____  ____   _____   ____   _/  |_  ____   _/  |_|  |__   ____     _____ |__| ____   ____  
 \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \  \   __\/  _ \  \   __\  |  \_/ __ \   /     \|  |/    \_/ __ \ 
@@ -5,5 +7,38 @@
   \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >  |__|  \____/   |__| |___|  /\___  > |__|_|  /__|___|  /\___  >
        \/       \/          \/            \/     \/                            \/     \/        \/        \/     \/ 
        
+
+Welcome to the mine rookie. WE got quoatas to fill and rocks to break. 
+
        
-       Welcome to 
+/$$$$$$$$          /$$                         /$$           /$$
+|__  $$__/         | $$                        |__/          | $$
+   | $$ /$$   /$$ /$$$$$$    /$$$$$$   /$$$$$$  /$$  /$$$$$$ | $$
+   | $$| $$  | $$|_  $$_/   /$$__  $$ /$$__  $$| $$ |____  $$| $$
+   | $$| $$  | $$  | $$    | $$  \ $$| $$  \__/| $$  /$$$$$$$| $$
+   | $$| $$  | $$  | $$ /$$| $$  | $$| $$      | $$ /$$__  $$| $$
+   | $$|  $$$$$$/  |  $$$$/|  $$$$$$/| $$      | $$|  $$$$$$$| $$
+   |__/ \______/    \___/   \______/ |__/      |__/ \_______/|__/
+
+
+
+Welcome to Mine It: A Text Adventure  
+   
+Goal: Clear the area and make some money! 
+
+---
+
+Commands:
+
+This game contains several commands, which do not need to be typed exactly. Synonyms 
+and additional information can be passed through. To see more information type: "help"
+
+- Pick up <item>
+  - Drop <item>
+  - Pick up <item>
+  - Move <direction>
+  - Mine <direction>
+  - Eat <item>
+  - Equip <item>
+  - Heal with <item>
+  - Help
