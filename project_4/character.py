@@ -28,7 +28,7 @@ class Character:
     self.energy = energy
     self.inventory = inventory
     self.money = money
-    self.max_inventory = 25
+    self.max_inventory = 20
     if equipped is None:
       self.equipped = inventory[0]
     else:
