@@ -27,11 +27,11 @@ from pathlib import Path
 
 
 
-logo = Path('project_4\logo.txt').read_text()
+#logo = Path('project_4\logo.txt').read_text()
 #print(logo)
-gen_help = Path("project_4\help.txt").read_text()
+#gen_help = Path("project_4\help.txt").read_text()
 #print(gen_help)
-welcome = open('project_4\welcome.txt', "r").read()
+#welcome = open('project_4\welcome.txt', "r").read()
 
 
 with io.open("project_4\dataset.json") as f:
