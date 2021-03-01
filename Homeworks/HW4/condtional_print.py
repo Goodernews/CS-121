@@ -1,0 +1,1 @@
+conditional_print = lambda f : lambda x : print(x) if f(x) == True else None 

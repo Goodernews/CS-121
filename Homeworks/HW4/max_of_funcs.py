@@ -1,0 +1,1 @@
+max_of_funcs = lambda f, g : lambda x: max([f(x), g(x)])

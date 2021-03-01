@@ -1,0 +1,1 @@
+max_of_two = lambda f, g, x : max([f(x), g(x)])
